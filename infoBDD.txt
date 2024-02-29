@@ -1,0 +1,28 @@
+---------------------CONNEXION phpMyAdmin-----------------
+
+lien : https://phpmyadmin.alwaysdata.com/
+Utlisateur : secu
+MP : Polytech20232024
+Version : 10.6 (mariadb)
+
+
+---------------------CONNEXION BDD-------------------------
+lien : https://mysql-polytech.alwaysdata.net/
+Utlisateur : secu_bdd
+MP : Polytech20232024
+Version : 10.6 (mariadb)
+
+------------------------------------------------------------
+HOST : mysql-polytech.alwaysdata.net
+PORT : 3306
+TABLE : secu_bdd
+USER : secu
+PASSWORD : Polytech20232024
+
+Pour le SuperAdmin et UserAdmin on a les comptes suivants :
+
+User : secu_superadmin
+Mdp : kogmaw-kywmoW-kiqju6
+
+User : secu_useradmin
+Mdp : tabqig-8wemfe-varTeb

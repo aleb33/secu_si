@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amuaire : Microservice d'authentification</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="container">
+        <form id="loginForm">
+            <label for="username">Adresse mail:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="button" onclick="submitForm()">Se connecter</button>
+
+            <button id="subscribeBtn" type="button" method="GET" action="/register">S'inscrire</button>
+        </form>
+
+       
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>

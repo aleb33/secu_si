@@ -1,0 +1,43 @@
+<a href="/" class="non-link"><h1>AMUaire</h1></a>
+
+<h2>Ajouter un utilisateur</h2>
+
+<form class="example-form">
+    <table class="example-full-width" cellspacing="0">
+        <tr>
+            <td><mat-form-field class="example-full-width">
+                    <mat-label>Prénom</mat-label>
+                    <input matInput id="prenom">
+                </mat-form-field></td>
+            <td><mat-form-field class="example-full-width">
+                    <mat-label>Nom</mat-label>
+                    <input matInput id="nom">
+                </mat-form-field></td>
+        </tr>
+    </table>
+
+    <!-- Charger valeur utilisateur ! -->
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Téléphone</mat-label>
+        <span matPrefix>+33 &nbsp;</span>
+        <input type="tel" matInput placeholder="6 66 66 66 66" id="telephone">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Adresse mail</mat-label>
+        <input matInput type="email" placeholder="Ex. toto@example.com" id="email">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput type="password" id="password">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Confirmer Mot de passe</mat-label>
+        <input matInput type="password" id="confirmPassword">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" class="example-full-width" (click)="addUser($event)">Ajouter le nouvel utilisateur</button>
+</form>

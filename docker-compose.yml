@@ -1,0 +1,74 @@
+version: '3'
+services:
+  auth:
+    image: "node:19-bullseye"
+    volumes:
+      - ./amuaire/auth/:/amuaire/auth/
+      - ./amuaire/node_modules:/amuaire/auth/node_modules
+      - ./amuaire/auth/views:/amuaire/auth/views
+      - ./amuaire/auth/public:/amuaire/auth/public
+      - database-volumes:/data
+    networks:
+      web:
+        ipv4_address: 192.168.0.12
+    ports:
+      - "80:3000"
+    command: "node /amuaire/auth/server.js"
+    depends_on:
+      - sqlite-container
+
+  django:
+    image: "python:3.11"
+    volumes:
+      - ./amuaire/backend/:/amuaire/backend/
+      - ./amuaire/backend/backend:/amuaire/backend/backend
+      - ./amuaire/backend/server:/amuaire/backend/server
+      - ./amuaire/backend/static:/amuaire/backend/static
+      - database-volumes:/data
+    networks:
+      web:
+        ipv4_address: 192.168.0.13
+    ports:
+      - "8000:8000"
+    entrypoint: /amuaire/backend/entrypoint.sh
+    depends_on:
+      - sqlite-container
+
+  sqlite-container:
+    image: "alpine:latest"
+    volumes:
+      - database-volumes:/data
+    networks:
+      web:
+        ipv4_address: 192.168.0.11
+
+  nginx:
+    environment:
+      - REQ_HEADER_FORWARDED_PROTO=http
+      - BACKEND=http://auth:3000
+      - APACHE_ALWAYS_TLS_REDIRECT=off
+    image: owasp/modsecurity-crs:nginx-alpine
+    networks:
+      web:
+        ipv4_address: 192.168.0.10
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    restart: always
+
+volumes:
+  database-volumes:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./data
+
+networks:
+  web:
+    driver: ipvlan
+    driver_opts:
+      parent: ens224
+    ipam:
+      config:
+        - subnet: 192.168.0.0/24
+          gateway: 192.168.0.1

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription Meteo</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+    <div class="container">
+        <form id="registerForm">
+            <h1>Inscription</h1>
+
+            <label for="firstname">Prénom:</label>
+            <input type="text" id="firstname" name="firstname" required>
+
+            <label for="lastname">Nom:</label>
+            <input type="text" id="lastname" name="lastname" required>
+
+            <label for="phone">Numéro de téléphone:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <label for="username">Adresse mail:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password" required>
+            <p id="passwordConditions" class="password-conditions">
+                Le mot de passe doit avoir au moins 8 caractères et contenir des chiffres et des majuscules.
+                <br>
+                <input type="checkbox" id="lengthCheckbox" disabled>Au moins 8 caractères
+                <input type="checkbox" id="numberCheckbox" disabled>Contenir des chiffres
+                <input type="checkbox" id="uppercaseCheckbox" disabled>Contenir des majuscules
+                <input type="checkbox" id="samePasswordCheckbox" disabled>Les deux mots de passe sont identiques
+            </p>
+
+
+            <label for="confirmPassword">Confirmer le mot de passe:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+            <button type="button" onclick="submitRegisterForm()">S'inscrire</button>
+
+            <br>
+
+            <button id="connectBtn" type="button" method="GET" action="/">Se connecter</button>
+        </form>
+
+    </div>
+
+    <div id="popup-container" style="display: none;">
+        <div id="popup-content">
+            <span id="close-btn" onclick="closePopup()">X</span>
+            <h2>Ajouter le 2FA à votre authentificateur</h2>
+            <img id="qrCodeImg" alt="Code QR">
+            <p id="redirect-text">Vous serez redirigé vers la page de connexion en fermant cette fenêtre pop-up.</p>
+        </div>
+    </div>
+
+    <script src="register.js"></script>
+</body>
+
+</html>
